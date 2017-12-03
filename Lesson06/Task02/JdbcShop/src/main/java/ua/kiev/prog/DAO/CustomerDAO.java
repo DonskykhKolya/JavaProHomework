@@ -55,6 +55,6 @@ public class CustomerDAO extends AbstractDAO<Integer, Customer> {
 
     public boolean exists(String login, String password) {
         Customer customer = find(login, password);
-        return customer != null ? true : false;
+        return customer != null;
     }
 }

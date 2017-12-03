@@ -60,6 +60,7 @@ public abstract class AbstractDAO<K, T> {
         } catch (IllegalAccessException | NoSuchFieldException e) {
             e.printStackTrace();
         }
+
         return result;
     }
 
