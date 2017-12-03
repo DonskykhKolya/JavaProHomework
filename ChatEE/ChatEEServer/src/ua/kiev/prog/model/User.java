@@ -1,16 +1,12 @@
 package ua.kiev.prog.model;
 
 
-import java.util.List;
-
-
 public class User {
 
     private String login;
     private String password;
     private String sessionId;
     private Status status;
-    private List<User> contacts;
 
     public User() { }
 
@@ -51,15 +47,4 @@ public class User {
         this.status = status;
     }
 
-    public List<User> getContacts() {
-        return this.contacts;
-    }
-
-    public boolean addContact(User user) {
-        boolean duplicate = this.contacts.contains(user);
-        if(!duplicate) {
-            this.contacts.add(user);
-        }
-        return !duplicate;
-    }
 }

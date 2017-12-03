@@ -40,15 +40,53 @@ public class Chat {
         th.setDaemon(true);
         th.start();
 
-        System.out.println("Enter your message: ");
-        while (true) {
-            String text = scanner.nextLine();
-            if (text.isEmpty()) break;
-            int result = httpClient.sendMessage(login, text);
-            if (result != HttpURLConnection.HTTP_OK) {
-                System.out.println("HTTP error occured: " + result);
-                return;
+        System.out.println("Welcome, " + login + "!");
+        while(true) {
+            System.out.println("1: send message to all");
+            System.out.println("2: send message to user");
+            System.out.println("3: change status");
+            System.out.println("4: show user list");
+            System.out.println("->");
+            String s = scanner.nextLine();
+
+            if (s.isEmpty()) break;
+
+            switch(s) {
+                case "1":
+                    sendMessage(null);
+                    break;
+                case "2":
+                    System.out.println("Enter user name: ");
+                    String name = scanner.nextLine();
+                    sendMessage(name);
+                    break;
+                case "3":
+                    changeStatus();
+                    break;
+                case "4":
+                    showUserList();
+                    break;
             }
         }
+    }
+
+    private boolean sendMessage(String to) {
+
+        System.out.println("Enter message text: ");
+        String text = scanner.nextLine();
+        int result = httpClient.sendMessage(login, to, text);
+        if (result != HttpURLConnection.HTTP_OK) {
+            System.out.println("HTTP error occured: " + result);
+            return false;
+        }
+        return true;
+    }
+
+    private void changeStatus() {
+
+    }
+
+    private void showUserList() {
+
     }
 }

@@ -17,12 +17,8 @@ public class UserList {
     }
 
     private void initUsers() {
-        User user1 = new User("admin", "admin");
-        User user2 = new User("test", "test");
-        user1.addContact(user2);
-        user2.addContact(user1);
-        users.add(user1);
-        users.add(user2);
+        users.add(new User("admin", "admin"));
+        users.add(new User("test", "test"));
     }
 
     public static synchronized UserList getInstance() {

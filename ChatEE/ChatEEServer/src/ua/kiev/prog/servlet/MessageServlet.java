@@ -30,7 +30,7 @@ public class MessageServlet extends HttpServlet {
             for(Cookie cookie : cookies){
                 if(cookie.getName().equals("session_id")){
                     String value = cookie.getValue();
-                    //TO DO: check sessionId
+                    //TODO: check sessionId
                     break;
                 }
             }

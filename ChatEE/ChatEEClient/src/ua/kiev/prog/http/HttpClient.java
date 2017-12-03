@@ -114,9 +114,9 @@ public class HttpClient {
         return bos.toByteArray();
     }
 
-    public int sendMessage(String from, String text) {
+    public int sendMessage(String from, String to, String text) {
 
-        Message msg = new Message(from, text);
+        Message msg = new Message(from, to, text);
         int result = 418;
 
         try {
