@@ -1,6 +1,5 @@
 package ua.kiev.prog.http;
 
-import ua.kiev.prog.model.JsonMessages;
 import ua.kiev.prog.model.Message;
 
 

@@ -2,8 +2,6 @@ package ua.kiev.prog.http;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.sun.deploy.util.StringUtils;
-import ua.kiev.prog.model.JsonMessages;
 import ua.kiev.prog.model.Message;
 import ua.kiev.prog.model.User;
 
@@ -93,7 +91,7 @@ public class HttpClient {
 
     public JsonMessages getMessages(int from) throws IOException {
 
-        HttpURLConnection conn = initConnection(BASE_URL + "/get?from=" + from, "GET", true);
+        HttpURLConnection conn = initConnection(BASE_URL + "/message?from=" + from, "GET", true);
 
         try (InputStream is = conn.getInputStream()) {
             byte[] buf = requestBodyToArray(is);
@@ -122,7 +120,7 @@ public class HttpClient {
         int result = 418;
 
         try {
-            HttpURLConnection conn = initConnection(BASE_URL + "/add", "POST", true);
+            HttpURLConnection conn = initConnection(BASE_URL + "/message", "POST", true);
             conn.setDoOutput(true);
 
             try (OutputStream os = conn.getOutputStream()) {

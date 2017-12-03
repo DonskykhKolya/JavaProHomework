@@ -10,17 +10,11 @@ public class Message {
     private String to;
     private String text;
 
+    public Message() {}
+
     public Message(String from, String text) {
         this.from = from;
         this.text = text;
-    }
-
-    @Override
-    public String toString() {
-        return new StringBuilder().append("[").append(date)
-                .append(", From: ").append(from).append(", To: ").append(to)
-                .append("] ").append(text)
-                .toString();
     }
 
     public Date getDate() {
@@ -53,5 +47,13 @@ public class Message {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    @Override
+    public String toString() {
+        return new StringBuilder().append("[").append(date)
+                .append(", From: ").append(from).append(", To: ").append(to)
+                .append("] ").append(text)
+                .toString();
     }
 }
