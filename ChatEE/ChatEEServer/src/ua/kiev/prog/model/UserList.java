@@ -10,8 +10,16 @@ public class UserList {
     private List<User> users = new ArrayList<>();
 
     private UserList() {
-        users.add(new User("admin", "admin"));
-        users.add(new User("test", "test"));
+        initUsers();
+    }
+
+    private void initUsers() {
+        User user1 = new User("admin", "admin");
+        User user2 = new User("test", "test");
+        user1.addContact(user2);
+        user2.addContact(user1);
+        users.add(user1);
+        users.add(user2);
     }
 
     public static synchronized UserList getInstance() {
@@ -22,22 +30,19 @@ public class UserList {
     }
 
     public synchronized void add(String login, String password) {
-        if(!userExists(login, password)) {
+        Optional<User> user = users.stream().findAny().filter(u -> u.getLogin().equals(login));
+        if(!user.isPresent()) {
             users.add(new User(login, password));
         }
     }
 
-    private synchronized boolean userExists(String login, String password) {
-        Optional<User> user = users.stream().filter(u -> u.getLogin().equals(login) && u.getPassword().equals(password)).findAny();
-        return user.isPresent();
-    }
-
-    public synchronized String checkUser(String login, String password) {
+    public synchronized String validate(String login, String password) {
         String sessionId = "";
-        Optional<User> user = users.stream().filter(u -> u.getLogin().equals(login) && u.getPassword().equals(password)).findAny();
+        Optional<User> user = users.stream().findAny().filter(u -> u.getLogin().equals(login) && u.getPassword().equals(password));
         if(user.isPresent()) {
             sessionId = UUID.randomUUID().toString();
             user.get().setSessionId(sessionId);
+            user.get().setStatus(Status.ON);
         }
         return sessionId;
     }

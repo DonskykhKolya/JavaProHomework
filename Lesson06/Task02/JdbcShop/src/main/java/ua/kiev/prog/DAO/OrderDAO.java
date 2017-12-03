@@ -14,6 +14,7 @@ public class OrderDAO extends AbstractDAO<Integer, Order> {
     private static final String CREATE_TABLE_SQL = "CREATE TABLE Orders (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "+
             "date DATETIME NOT NULL, "+
             "customer_id INT NOT NULL)";
+    private static final String DROP_JUNCTION_TABLE_SQL = "DROP TABLE IF EXISTS Orders_Details";
     private static final String CREATE_JUNCTION_TABLE_SQL = "CREATE TABLE Orders_Details (order_id INT NOT NULL, product_id INT NOT NULL, "+
             "PRIMARY KEY (order_id, product_id))";
 
@@ -26,6 +27,7 @@ public class OrderDAO extends AbstractDAO<Integer, Order> {
         try (Statement st = getConnection().createStatement()) {
             st.execute(DROP_TABLE_SQL);
             st.execute(CREATE_TABLE_SQL);
+            st.execute(DROP_JUNCTION_TABLE_SQL);
             st.execute(CREATE_JUNCTION_TABLE_SQL);
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
@@ -35,28 +37,34 @@ public class OrderDAO extends AbstractDAO<Integer, Order> {
     @Override
     public int add(Order order) {
 
+        int result = 0;
+
         try {
             getConnection().setAutoCommit(false);
 
             try (PreparedStatement st = getConnection().prepareStatement("INSERT INTO Orders (date, customer_id) VALUES(?, ?)")) {
                 st.setDate(1, Date.valueOf(order.getDate()));
                 st.setInt(2, order.getCustomer().getId());
-                int id = st.executeUpdate();
-                order.setId(id);
+                result = st.executeUpdate();
+            }
+
+            try (Statement st = getConnection().createStatement();
+                 ResultSet rs = st.executeQuery("SELECT LAST_INSERT_ID()")) {
+                if(rs.next()) {
+                    order.setId(rs.getInt(1));
+                }
             }
 
             for(Product product : order.getProducts()) {
-                try (PreparedStatement st2 = getConnection().prepareStatement("INSERT INTO Orders_Details (order_id, product_id) VALUES(?, ?)")) {
-                    st2.setInt(1, order.getId());
-                    st2.setInt(2, product.getId());
-                    st2.executeUpdate();
+                try (PreparedStatement st = getConnection().prepareStatement("INSERT INTO Orders_Details (order_id, product_id) VALUES(?, ?)")) {
+                    st.setInt(1, order.getId());
+                    st.setInt(2, product.getId());
+                    st.executeUpdate();
                 }
             }
 
             getConnection().commit();
             getConnection().setAutoCommit(true);
-
-            return order.getId();
 
         } catch (SQLException ex) {
             try {
@@ -66,6 +74,8 @@ public class OrderDAO extends AbstractDAO<Integer, Order> {
             }
             throw new RuntimeException(ex);
         }
+
+        return result;
     }
 
     public List<Order> getOrderList(int customerId) {
@@ -78,9 +88,25 @@ public class OrderDAO extends AbstractDAO<Integer, Order> {
         try (PreparedStatement st = getConnection().prepareStatement(query)) {
             st.setInt(1, customerId);
 
+            int curId = 0;
+            Order curOrder = null;
+
             ResultSet rs = st.executeQuery();
             while(rs.next()) {
-
+                int id = rs.getInt(1);
+                if(id != curId) {
+                    curOrder = new Order();
+                    curOrder.setId(id);
+                    curOrder.setDate(rs.getDate(2).toLocalDate());
+                    curId = id;
+                    orderList.add(curOrder);
+                }
+                Product curProduct = new Product();
+                curProduct.setId(rs.getInt(3));
+                curProduct.setName(rs.getString(4));
+                curProduct.setDescription(rs.getString(5));
+                curProduct.setPrice(rs.getDouble(6));
+                curOrder.addProduct(curProduct);
             }
             rs.close();
         } catch (SQLException ex) {
@@ -88,5 +114,22 @@ public class OrderDAO extends AbstractDAO<Integer, Order> {
         }
 
         return orderList;
+    }
+
+    @Override
+    public int change(Order order) {
+        System.out.println("Method not supported.");
+        return 0;
+    }
+
+    @Override
+    public void delete(Integer id) {
+        System.out.println("Method not supported.");
+    }
+
+    @Override
+    public List<Order> getAll(Class<Order> cls) {
+        System.out.println("Method not supported.");
+        return null;
     }
 }

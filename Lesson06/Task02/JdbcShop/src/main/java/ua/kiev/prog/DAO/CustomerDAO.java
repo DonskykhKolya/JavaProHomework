@@ -11,8 +11,8 @@ public class CustomerDAO extends AbstractDAO<Integer, Customer> {
     private static final String CREATE_TABLE_SQL = "CREATE TABLE Customers (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, "+
             "login VARCHAR(20) NOT NULL, "+
             "password VARCHAR(20) NOT NULL, "+
-            "name VARCHAR(20) NOT NULL, "+
-            "address VARCHAR(20) NOT NULL, "+
+            "name VARCHAR(30) NOT NULL, "+
+            "address VARCHAR(50) NOT NULL, "+
             "phone VARCHAR(20) NOT NULL)";
 
     public CustomerDAO(Connection conn) {

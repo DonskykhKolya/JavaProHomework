@@ -1,6 +1,7 @@
 package ua.kiev.prog.DTO;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -9,7 +10,7 @@ public class Order {
     private int id;
     private LocalDate date;
     private Customer customer;
-    private List<Product> products;
+    private List<Product> products = new ArrayList<>();
 
     public Order() {}
 
@@ -50,7 +51,6 @@ public class Order {
         return "Order{" +
                 "id=" + id +
                 ", date=" + date +
-                ", customer=" + customer +
                 ", products=" + products +
                 '}';
     }

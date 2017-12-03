@@ -21,7 +21,7 @@ public class LoginServlet extends HttpServlet {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
-        String sessionId = userList.checkUser(login, password);
+        String sessionId = userList.validate(login, password);
         if(sessionId.isEmpty()) {
             resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         }

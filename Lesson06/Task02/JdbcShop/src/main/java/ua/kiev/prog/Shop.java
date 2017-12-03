@@ -9,8 +9,8 @@ import ua.kiev.prog.DTO.Product;
 import ua.kiev.prog.Utils.ConnectionFactory;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -19,6 +19,7 @@ public class Shop {
 
     private Customer currCustomer;
 
+    private Connection conn;
     private CustomerDAO customerDAO;
     private ProductDAO productDAO;
     private OrderDAO orderDAO;
@@ -26,10 +27,18 @@ public class Shop {
     private Scanner sc = new Scanner(System.in);
 
     public Shop() {
-        Connection conn = ConnectionFactory.getConnection();
+        initDAO();
+    }
+
+    private void initDAO() {
+
+        conn = ConnectionFactory.getConnection();
         customerDAO = new CustomerDAO(conn);
+        customerDAO.init();
         productDAO = new ProductDAO(conn);
+        productDAO.init();
         orderDAO = new OrderDAO(conn);
+        orderDAO.init();
     }
 
     public void showLoginMenu() {
@@ -47,6 +56,7 @@ public class Shop {
                 signIn();
                 break;
             default:
+                close();
                 return;
         }
     }
@@ -130,6 +140,7 @@ public class Shop {
                     showCustomerInfo();
                     break;
                 default:
+                    close();
                     return;
             }
         }
@@ -193,5 +204,14 @@ public class Shop {
 
     private void showCustomerInfo() {
         System.out.println(currCustomer.toString());
+    }
+
+    private void close() {
+        sc.close();
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

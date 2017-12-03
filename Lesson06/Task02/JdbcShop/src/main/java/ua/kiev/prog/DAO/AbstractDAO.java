@@ -34,7 +34,7 @@ public abstract class AbstractDAO<K, T> {
 
     private int addOrUpdate(T instance, boolean update) {
 
-        int id = 0;
+        int result = 0;
 
         Class cls = instance.getClass();
         Field[] fields = cls.getDeclaredFields();
@@ -54,14 +54,13 @@ public abstract class AbstractDAO<K, T> {
                 fieldId.setAccessible(true);
                 st.setObject(i, fieldId.get(instance));
             }
-            id = st.executeUpdate();
+            result = st.executeUpdate();
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         } catch (IllegalAccessException | NoSuchFieldException e) {
             e.printStackTrace();
         }
-
-        return id;
+        return result;
     }
 
     private String createUpdateQuery(Field[] fields) {
