@@ -5,8 +5,8 @@ public class User {
 
     private String login;
     private String password;
-    private String sessionId;
     private Status status;
+    private String sessionId;
 
     public User() { }
 
@@ -31,14 +31,6 @@ public class User {
         this.password = password;
     }
 
-    public String getSessionId() {
-        return sessionId;
-    }
-
-    public void setSessionId(String sessionId) {
-        this.sessionId = sessionId;
-    }
-
     public Status getStatus() {
         return status;
     }
@@ -46,5 +38,9 @@ public class User {
     public void setStatus(Status status) {
         this.status = status;
     }
+
+    public String getSessionId() { return sessionId;  }
+
+    public void setSessionId(String sessionId) { this.sessionId = sessionId; }
 
 }

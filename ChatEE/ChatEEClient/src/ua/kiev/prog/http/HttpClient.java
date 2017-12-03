@@ -3,6 +3,7 @@ package ua.kiev.prog.http;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import ua.kiev.prog.model.Message;
+import ua.kiev.prog.model.Status;
 import ua.kiev.prog.model.User;
 
 import java.io.ByteArrayOutputStream;
@@ -117,7 +118,7 @@ public class HttpClient {
     public int sendMessage(String from, String to, String text) {
 
         Message msg = new Message(from, to, text);
-        int result = 418;
+        int result = HttpURLConnection.HTTP_INTERNAL_ERROR;
 
         try {
             HttpURLConnection conn = initConnection(BASE_URL + "/message", "POST", true);
@@ -125,6 +126,25 @@ public class HttpClient {
 
             try (OutputStream os = conn.getOutputStream()) {
                 os.write(gson.toJson(msg).getBytes(StandardCharsets.UTF_8));
+            }
+            result = conn.getResponseCode();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+    public int changeStatus(Status newStatus) {
+
+        int result = HttpURLConnection.HTTP_INTERNAL_ERROR;
+
+        try {
+            HttpURLConnection conn = initConnection(BASE_URL + "/user?status=" + newStatus, "POST", true);
+            conn.setDoOutput(true);
+
+            try (OutputStream os = conn.getOutputStream()) {
+                os.write(null);
             }
             result = conn.getResponseCode();
         } catch (IOException e) {

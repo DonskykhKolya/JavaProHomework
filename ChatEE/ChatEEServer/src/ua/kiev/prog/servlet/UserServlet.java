@@ -10,23 +10,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet(name="LoginServlet", urlPatterns = "/login")
-public class LoginServlet extends HttpServlet {
+@WebServlet(name="UserServlet", urlPatterns = "/user")
+public class UserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
-        String login = req.getParameter("login");
-        String password = req.getParameter("password");
-
-        String sessionId = SecurityService.check(login, password);
-        if(sessionId.isEmpty()) {
+        Cookie[] cookies = req.getCookies();
+        if(!SecurityService.validate(cookies)) {
             resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
         }
-        else {
-            Cookie cookie = new Cookie("session_id", sessionId);
-            cookie.setMaxAge(3600);
-            resp.addCookie(cookie);
-        }
+
+        String status = req.getParameter("status");
     }
 }

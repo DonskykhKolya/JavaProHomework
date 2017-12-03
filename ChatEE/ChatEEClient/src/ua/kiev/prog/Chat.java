@@ -2,6 +2,8 @@ package ua.kiev.prog;
 
 import ua.kiev.prog.http.HttpClient;
 import ua.kiev.prog.http.MessageListener;
+import ua.kiev.prog.model.Status;
+import ua.kiev.prog.model.User;
 
 import java.net.HttpURLConnection;
 import java.util.Scanner;
@@ -11,7 +13,7 @@ public class Chat {
 
     private HttpClient httpClient;
     private Scanner scanner;
-    private String login;
+    private User currUser;
 
     public Chat() {
         httpClient = new HttpClient();
@@ -21,7 +23,7 @@ public class Chat {
     public void login() {
 
         System.out.println("Enter your login: ");
-        login = scanner.nextLine();
+        String login = scanner.nextLine();
         System.out.println("Enter your password: ");
         String password = scanner.nextLine();
 
@@ -30,6 +32,8 @@ public class Chat {
             login();
         }
         else {
+            currUser = new User(login, password);
+            currUser.setStatus(Status.ON);
             start();
         }
     }
@@ -40,7 +44,7 @@ public class Chat {
         th.setDaemon(true);
         th.start();
 
-        System.out.println("Welcome, " + login + "!");
+        System.out.println("Welcome, " + currUser.getLogin() + "!");
         while(true) {
             System.out.println("1: send message to all");
             System.out.println("2: send message to user");
@@ -66,27 +70,57 @@ public class Chat {
                 case "4":
                     showUserList();
                     break;
+                default:
+                    close();
             }
         }
     }
 
-    private boolean sendMessage(String to) {
+    private void sendMessage(String to) {
 
         System.out.println("Enter message text: ");
         String text = scanner.nextLine();
-        int result = httpClient.sendMessage(login, to, text);
+        int result = httpClient.sendMessage(currUser.getLogin(), to, text);
         if (result != HttpURLConnection.HTTP_OK) {
             System.out.println("HTTP error occured: " + result);
-            return false;
         }
-        return true;
     }
 
     private void changeStatus() {
 
+        System.out.println("Your current status is: " + currUser.getStatus().toString());
+        System.out.println("You can change your status to: ");
+        System.out.println("'+' - ON");
+        System.out.println("'-' - OFF");
+        String s = scanner.nextLine();
+
+        Status newStatus;
+        switch(s){
+            case "+":
+                newStatus = Status.ON;
+                break;
+            case "-":
+                newStatus = Status.OFF;
+                break;
+            default:
+                return;
+        }
+
+        int result = httpClient.changeStatus(newStatus);
+        if (result != HttpURLConnection.HTTP_OK) {
+            System.out.println("HTTP error occured: " + result);
+        }
+        else {
+            currUser.setStatus(newStatus);
+            System.out.println("Your status changed. Current status is: " + newStatus);
+        }
     }
 
     private void showUserList() {
 
+    }
+
+    private void close() {
+        scanner.close();
     }
 }

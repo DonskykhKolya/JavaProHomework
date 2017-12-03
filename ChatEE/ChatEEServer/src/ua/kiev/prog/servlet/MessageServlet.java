@@ -3,6 +3,7 @@ package ua.kiev.prog.servlet;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import ua.kiev.prog.model.Message;
+import ua.kiev.prog.service.SecurityService;
 import ua.kiev.prog.storage.MessageList;
 
 import javax.servlet.annotation.WebServlet;
@@ -26,14 +27,9 @@ public class MessageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
         Cookie[] cookies = req.getCookies();
-        if(cookies != null){
-            for(Cookie cookie : cookies){
-                if(cookie.getName().equals("session_id")){
-                    String value = cookie.getValue();
-                    //TODO: check sessionId
-                    break;
-                }
-            }
+        if(!SecurityService.validate(cookies)) {
+            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
         }
 
         String fromStr = req.getParameter("from");
@@ -50,10 +46,17 @@ public class MessageServlet extends HttpServlet {
             OutputStream os = resp.getOutputStream();
             os.write(json.getBytes(StandardCharsets.UTF_8));
         }
+
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
+        Cookie[] cookies = req.getCookies();
+        if(!SecurityService.validate(cookies)) {
+            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
+        }
 
         byte[] buf = requestBodyToArray(req);
         String bufStr = new String(buf, StandardCharsets.UTF_8);

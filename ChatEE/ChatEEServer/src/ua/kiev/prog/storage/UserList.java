@@ -28,21 +28,38 @@ public class UserList {
         return instance;
     }
 
-    public synchronized void add(String login, String password) {
+    public synchronized String add(String login, String password) {
+
+        String sessionId = "";
+
         Optional<User> user = users.stream().findAny().filter(u -> u.getLogin().equals(login));
         if(!user.isPresent()) {
-            users.add(new User(login, password));
+            sessionId = UUID.randomUUID().toString();
+            User newUser = new User(login, password);
+            newUser.setStatus(Status.ON);
+            newUser.setSessionId(sessionId);
+            users.add(newUser);
         }
+
+        return sessionId;
     }
 
-    public synchronized String validate(String login, String password) {
+    public synchronized String check(String login, String password) {
+
         String sessionId = "";
+
         Optional<User> user = users.stream().findAny().filter(u -> u.getLogin().equals(login) && u.getPassword().equals(password));
         if(user.isPresent()) {
             sessionId = UUID.randomUUID().toString();
             user.get().setSessionId(sessionId);
             user.get().setStatus(Status.ON);
         }
+
         return sessionId;
+    }
+
+    public synchronized boolean isValid(String sessionId) {
+        Optional<User> user = users.stream().findAny().filter(u -> u.getSessionId().equals(sessionId));
+        return user.isPresent();
     }
 }
