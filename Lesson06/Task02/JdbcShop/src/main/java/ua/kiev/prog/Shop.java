@@ -80,9 +80,8 @@ public class Shop {
         customer.setPhone(phone);
 
         if(!customerDAO.exists(login, password)) {
-            int id = customerDAO.add(customer);
-            if (id != 0) {
-                customer.setId(id);
+            int res = customerDAO.add(customer);
+            if (res != 0) {
                 currCustomer = customer;
                 showMainMenu();
             } else {
@@ -159,8 +158,8 @@ public class Shop {
         Product product = new Product(name, price);
         product.setDescription(desc);
 
-        int id = productDAO.add(product);
-        if(id == 0) {
+        int res = productDAO.add(product);
+        if(res == 0) {
             System.out.println("Can't add new product.");
         }
     }
@@ -191,8 +190,8 @@ public class Shop {
             }
         } while (!s.equals("x"));
 
-        int id = orderDAO.add(order);
-        if(id == 0) {
+        int res = orderDAO.add(order);
+        if(res == 0) {
             System.out.println("Can't save your order. Please, try again later.");
         }
     }
