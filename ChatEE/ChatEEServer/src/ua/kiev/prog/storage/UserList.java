@@ -1,4 +1,7 @@
-package ua.kiev.prog.model;
+package ua.kiev.prog.storage;
+
+import ua.kiev.prog.model.Status;
+import ua.kiev.prog.model.User;
 
 import java.util.*;
 

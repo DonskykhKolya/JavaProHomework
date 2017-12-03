@@ -1,6 +1,6 @@
 package ua.kiev.prog.servlet;
 
-import ua.kiev.prog.model.UserList;
+import ua.kiev.prog.storage.UserList;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;

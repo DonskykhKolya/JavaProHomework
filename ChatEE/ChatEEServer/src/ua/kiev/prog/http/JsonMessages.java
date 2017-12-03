@@ -1,8 +1,11 @@
-package ua.kiev.prog.model;
+package ua.kiev.prog.http;
+
+import ua.kiev.prog.model.Message;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
 
 public class JsonMessages {
 

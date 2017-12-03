@@ -1,7 +1,9 @@
-package ua.kiev.prog.model;
+package ua.kiev.prog.storage;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import ua.kiev.prog.http.JsonMessages;
+import ua.kiev.prog.model.Message;
 
 import java.util.LinkedList;
 import java.util.List;
