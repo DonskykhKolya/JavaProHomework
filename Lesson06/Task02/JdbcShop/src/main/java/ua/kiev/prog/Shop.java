@@ -1,12 +1,12 @@
 package ua.kiev.prog;
 
-import ua.kiev.prog.DAO.CustomerDAO;
-import ua.kiev.prog.DAO.OrderDAO;
-import ua.kiev.prog.DAO.ProductDAO;
-import ua.kiev.prog.DTO.Customer;
-import ua.kiev.prog.DTO.Order;
-import ua.kiev.prog.DTO.Product;
-import ua.kiev.prog.Utils.ConnectionFactory;
+import ua.kiev.prog.dao.CustomerDAO;
+import ua.kiev.prog.dao.OrderDAO;
+import ua.kiev.prog.dao.ProductDAO;
+import ua.kiev.prog.dto.Customer;
+import ua.kiev.prog.dto.Order;
+import ua.kiev.prog.dto.Product;
+import ua.kiev.prog.utils.ConnectionFactory;
 
 import java.sql.Connection;
 import java.sql.SQLException;

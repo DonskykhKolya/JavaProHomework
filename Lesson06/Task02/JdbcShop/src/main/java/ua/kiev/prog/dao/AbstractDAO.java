@@ -1,4 +1,4 @@
-package ua.kiev.prog.DAO;
+package ua.kiev.prog.dao;
 
 import java.lang.reflect.Field;
 import java.sql.*;

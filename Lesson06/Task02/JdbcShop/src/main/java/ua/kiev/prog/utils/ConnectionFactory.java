@@ -1,4 +1,4 @@
-package ua.kiev.prog.Utils;
+package ua.kiev.prog.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

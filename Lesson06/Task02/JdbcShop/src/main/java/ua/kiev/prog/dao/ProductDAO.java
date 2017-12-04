@@ -1,6 +1,6 @@
-package ua.kiev.prog.DAO;
+package ua.kiev.prog.dao;
 
-import ua.kiev.prog.DTO.Product;
+import ua.kiev.prog.dto.Product;
 
 import java.sql.*;
 

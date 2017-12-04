@@ -1,7 +1,7 @@
-package ua.kiev.prog.DAO;
+package ua.kiev.prog.dao;
 
-import ua.kiev.prog.DTO.Order;
-import ua.kiev.prog.DTO.Product;
+import ua.kiev.prog.dto.Order;
+import ua.kiev.prog.dto.Product;
 
 import java.sql.*;
 import java.util.ArrayList;

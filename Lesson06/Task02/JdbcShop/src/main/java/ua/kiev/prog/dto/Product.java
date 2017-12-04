@@ -1,4 +1,4 @@
-package ua.kiev.prog.DTO;
+package ua.kiev.prog.dto;
 
 
 public class Product {
