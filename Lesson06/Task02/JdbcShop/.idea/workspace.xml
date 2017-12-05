@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9e43eda9-f08b-4dcd-bbe2-767ce6ca8e2a" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ua/kiev/prog/DAO/AbstractDAO.java" afterPath="$PROJECT_DIR$/src/main/java/ua/kiev/prog/dao/AbstractDAO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ua/kiev/prog/DAO/CustomerDAO.java" afterPath="$PROJECT_DIR$/src/main/java/ua/kiev/prog/dao/CustomerDAO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ua/kiev/prog/DAO/OrderDAO.java" afterPath="$PROJECT_DIR$/src/main/java/ua/kiev/prog/dao/OrderDAO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ua/kiev/prog/DAO/ProductDAO.java" afterPath="$PROJECT_DIR$/src/main/java/ua/kiev/prog/dao/ProductDAO.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ua/kiev/prog/DTO/Customer.java" afterPath="$PROJECT_DIR$/src/main/java/ua/kiev/prog/dto/Customer.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ua/kiev/prog/DTO/Order.java" afterPath="$PROJECT_DIR$/src/main/java/ua/kiev/prog/dto/Order.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ua/kiev/prog/DTO/Product.java" afterPath="$PROJECT_DIR$/src/main/java/ua/kiev/prog/dto/Product.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/ua/kiev/prog/Utils/ConnectionFactory.java" afterPath="$PROJECT_DIR$/src/main/java/ua/kiev/prog/utils/ConnectionFactory.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../ChatEE/ChatEEClient/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../../ChatEE/ChatEEClient/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../../ChatEE/ChatEEServer/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../../ChatEE/ChatEEServer/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/kiev/prog/Shop.java" afterPath="$PROJECT_DIR$/src/main/java/ua/kiev/prog/Shop.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -304,7 +295,7 @@
       <workItem from="1512222645322" duration="9300000" />
       <workItem from="1512235974282" duration="4302000" />
       <workItem from="1512303273326" duration="3221000" />
-      <workItem from="1512406142186" duration="93000" />
+      <workItem from="1512406142186" duration="331000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1512236046009</created>
@@ -334,11 +325,18 @@
       <option name="project" value="LOCAL" />
       <updated>1512305947163</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="package rename">
+      <created>1512406286081</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1512406286081</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16916000" />
+    <option name="totallyTimeSpent" value="17154000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -380,7 +378,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="package rename" />
+    <option name="LAST_COMMIT_MESSAGE" value="package rename" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
