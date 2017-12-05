@@ -61,8 +61,10 @@ public class MenuItemDAOImpl implements MenuItemDAO {
     public List<MenuItem> getByWeight(int maxWeight) {
 
         List<MenuItem> result = new ArrayList<>();
+
         TypedQuery<MenuItem> query = entityManager.createQuery("SELECT m FROM MenuItem m", MenuItem.class);
         List<MenuItem> menuList = query.getResultList();
+
         int sumWeight = 0;
         for(MenuItem item : menuList) {
             sumWeight += item.getWeight();
@@ -70,6 +72,7 @@ public class MenuItemDAOImpl implements MenuItemDAO {
                 result.add(item);
             }
         }
+
         return result;
     }
 

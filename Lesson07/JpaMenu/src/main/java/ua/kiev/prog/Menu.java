@@ -76,24 +76,12 @@ public class Menu {
         String maxStr = scanner.nextLine();
         double max = Double.parseDouble(maxStr);
 
-        List<MenuItem> resultList = dao.getByPrice(min, max);
-        if(resultList.size() > 0) {
-            resultList.forEach(System.out::println);
-        }
-        else {
-            System.out.println("No records found.");
-        }
+        showResults(dao.getByPrice(min, max));
     }
 
     private void getWithDiscount() {
 
-        List<MenuItem> resultList = dao.getWithDiscount();
-        if(resultList.size() > 0) {
-            resultList.forEach(System.out::println);
-        }
-        else {
-            System.out.println("No records found.");
-        }
+        showResults(dao.getWithDiscount());
     }
 
     private void getBySumWeight() {
@@ -102,7 +90,11 @@ public class Menu {
         String maxStr = scanner.nextLine();
         int maxWeight = Integer.parseInt(maxStr);
 
-        List<MenuItem> resultList = dao.getByWeight(maxWeight);
+        showResults(dao.getByWeight(maxWeight));
+    }
+
+    private void showResults(List<MenuItem> resultList) {
+
         if(resultList.size() > 0) {
             resultList.forEach(System.out::println);
         }
