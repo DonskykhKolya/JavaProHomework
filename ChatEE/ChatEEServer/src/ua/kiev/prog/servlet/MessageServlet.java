@@ -21,13 +21,14 @@ import java.nio.charset.StandardCharsets;
 @WebServlet(name="MessageServlet", urlPatterns = "/message")
 public class MessageServlet extends HttpServlet {
 
+    private SecurityService securityService = new SecurityService();
     private MessageList msgList = MessageList.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
         Cookie[] cookies = req.getCookies();
-        if(!SecurityService.validate(cookies)) {
+        if(!securityService.validate(cookies)) {
             resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             return;
         }
@@ -53,7 +54,7 @@ public class MessageServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
         Cookie[] cookies = req.getCookies();
-        if(!SecurityService.validate(cookies)) {
+        if(!securityService.validate(cookies)) {
             resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             return;
         }

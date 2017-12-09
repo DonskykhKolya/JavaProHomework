@@ -17,11 +17,13 @@ public class UserList {
     }
 
     private void initUsers() {
+
         users.add(new User("admin", "admin"));
         users.add(new User("test", "test"));
     }
 
     public static synchronized UserList getInstance() {
+
         if(instance == null) {
             instance = new UserList();
         }
@@ -59,7 +61,18 @@ public class UserList {
     }
 
     public synchronized boolean isValid(String sessionId) {
+
         Optional<User> user = users.stream().findAny().filter(u -> u.getSessionId().equals(sessionId));
         return user.isPresent();
+    }
+
+    public synchronized boolean changeStatus(String sessionId, Status newStatus) {
+
+        Optional<User> user = users.stream().findAny().filter(u -> u.getSessionId().equals(sessionId));
+        if(!user.isPresent()) {
+            return false;
+        }
+        user.get().setStatus(newStatus);
+        return true;
     }
 }

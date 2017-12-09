@@ -22,7 +22,6 @@ public class HttpClient {
     private Gson gson;
     private CookieManager cookieManager;
 
-
     public HttpClient() {
 
         gson = new GsonBuilder().create();
@@ -31,7 +30,6 @@ public class HttpClient {
         cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
         CookieHandler.setDefault(cookieManager);
     }
-
 
     public boolean login(String login, String password) {
 
@@ -144,7 +142,7 @@ public class HttpClient {
             conn.setDoOutput(true);
 
             try (OutputStream os = conn.getOutputStream()) {
-                os.write(null);
+                os.write(gson.toJson(newStatus).getBytes());
             }
             result = conn.getResponseCode();
         } catch (IOException e) {

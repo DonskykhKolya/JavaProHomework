@@ -13,13 +13,15 @@ import java.io.IOException;
 @WebServlet(name="LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
 
+    private SecurityService securityService = new SecurityService();
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
-        String sessionId = SecurityService.check(login, password);
+        String sessionId = securityService.check(login, password);
         if(sessionId.isEmpty()) {
             resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         }

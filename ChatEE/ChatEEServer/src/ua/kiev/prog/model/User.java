@@ -43,4 +43,11 @@ public class User {
 
     public void setSessionId(String sessionId) { this.sessionId = sessionId; }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "login='" + login + '\'' +
+                ", status=" + status +
+                '}';
+    }
 }

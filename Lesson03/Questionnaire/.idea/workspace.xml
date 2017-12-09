@@ -6,7 +6,23 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3462cbd4-93e9-46ae-87a6-dd407dea20ed" name="Default" comment="" />
+    <list default="true" id="3462cbd4-93e9-46ae-87a6-dd407dea20ed" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../ChatEE/ChatEEClient/out/production/ChatEEClient/ua/kiev/prog/http/HttpClient.class" afterPath="$PROJECT_DIR$/../../ChatEE/ChatEEClient/out/production/ChatEEClient/ua/kiev/prog/http/HttpClient.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../ChatEE/ChatEEServer/out/artifacts/ChatEEServer_war_exploded/WEB-INF/classes/ua/kiev/prog/servlet/LoginServlet.class" afterPath="$PROJECT_DIR$/../../ChatEE/ChatEEServer/out/artifacts/ChatEEServer_war_exploded/WEB-INF/classes/ua/kiev/prog/servlet/LoginServlet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../ChatEE/ChatEEServer/out/production/ChatEEServer/ua/kiev/prog/servlet/LoginServlet.class" afterPath="$PROJECT_DIR$/../../ChatEE/ChatEEServer/out/production/ChatEEServer/ua/kiev/prog/servlet/LoginServlet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../ChatEE/ChatEEClient/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../ChatEE/ChatEEClient/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../ChatEE/ChatEEClient/src/ua/kiev/prog/Chat.java" afterPath="$PROJECT_DIR$/../../ChatEE/ChatEEClient/src/ua/kiev/prog/Chat.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../ChatEE/ChatEEClient/src/ua/kiev/prog/http/HttpClient.java" afterPath="$PROJECT_DIR$/../../ChatEE/ChatEEClient/src/ua/kiev/prog/http/HttpClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../ChatEE/ChatEEClient/src/ua/kiev/prog/model/User.java" afterPath="$PROJECT_DIR$/../../ChatEE/ChatEEClient/src/ua/kiev/prog/model/User.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../ChatEE/ChatEEServer/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../ChatEE/ChatEEServer/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../ChatEE/ChatEEServer/src/ua/kiev/prog/model/User.java" afterPath="$PROJECT_DIR$/../../ChatEE/ChatEEServer/src/ua/kiev/prog/model/User.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../ChatEE/ChatEEServer/src/ua/kiev/prog/service/SecurityService.java" afterPath="$PROJECT_DIR$/../../ChatEE/ChatEEServer/src/ua/kiev/prog/service/SecurityService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../ChatEE/ChatEEServer/src/ua/kiev/prog/service/UserService.java" afterPath="$PROJECT_DIR$/../../ChatEE/ChatEEServer/src/ua/kiev/prog/service/UserService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../ChatEE/ChatEEServer/src/ua/kiev/prog/servlet/LoginServlet.java" afterPath="$PROJECT_DIR$/../../ChatEE/ChatEEServer/src/ua/kiev/prog/servlet/LoginServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../ChatEE/ChatEEServer/src/ua/kiev/prog/servlet/MessageServlet.java" afterPath="$PROJECT_DIR$/../../ChatEE/ChatEEServer/src/ua/kiev/prog/servlet/MessageServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../ChatEE/ChatEEServer/src/ua/kiev/prog/servlet/UserServlet.java" afterPath="$PROJECT_DIR$/../../ChatEE/ChatEEServer/src/ua/kiev/prog/servlet/UserServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../ChatEE/ChatEEServer/src/ua/kiev/prog/storage/UserList.java" afterPath="$PROJECT_DIR$/../../ChatEE/ChatEEServer/src/ua/kiev/prog/storage/UserList.java" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,11 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="QuestionnaireServlet.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="QuestionnaireServlet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ua/kiev/prog/QuestionnaireServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="23" column="53" lean-forward="false" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="53" />
+            <state relative-caret-position="425">
+              <caret line="25" column="44" lean-forward="true" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -29,21 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="statistics.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/statistics.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="15" lean-forward="false" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Questionnaire.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Questionnaire.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ua/kiev/prog/Questionnaire.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+            <state relative-caret-position="595">
+              <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -64,8 +70,8 @@
       <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="36" lean-forward="false" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+            <state relative-caret-position="153">
+              <caret line="9" column="42" lean-forward="true" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -114,10 +120,8 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="100" />
-    <option name="y" value="20" />
-    <option name="width" value="1400" />
-    <option name="height" value="820" />
+    <option name="width" value="1612" />
+    <option name="height" value="912" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -158,18 +162,24 @@
               <item name="Questionnaire" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Questionnaire" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Questionnaire" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Demo/3-JavaEE-Servlet/JavaEE2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Demo/4-JSTL/JSTLSample" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
@@ -355,6 +365,7 @@
       <workItem from="1511264517555" duration="266000" />
       <workItem from="1511340012947" duration="613000" />
       <workItem from="1511371706589" duration="94000" />
+      <workItem from="1512583817156" duration="885000" />
     </task>
     <task id="LOCAL-00001" summary="lesson3 task1 - questionnaire">
       <created>1511264739772</created>
@@ -374,7 +385,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1140000" />
+    <option name="totallyTimeSpent" value="2025000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -430,6 +441,50 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/ua/kiev/prog/QuestionnaireServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="23" column="53" lean-forward="false" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/statistics.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="15" lean-forward="false" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/kiev/prog/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="36" lean-forward="false" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/kiev/prog/Questionnaire.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ua/kiev/prog/QuestionnaireServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -554,18 +609,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="36" lean-forward="false" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ua/kiev/prog/QuestionnaireServlet.java">
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="23" column="53" lean-forward="false" selection-start-line="23" selection-start-column="43" selection-end-line="23" selection-end-column="53" />
+        <state relative-caret-position="153">
+          <caret line="9" column="42" lean-forward="true" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ua/kiev/prog/Questionnaire.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -580,10 +643,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ua/kiev/prog/Questionnaire.java">
+    <entry file="file://$PROJECT_DIR$/src/ua/kiev/prog/QuestionnaireServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        <state relative-caret-position="425">
+          <caret line="25" column="44" lean-forward="true" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -103,6 +103,7 @@ public class Chat {
                 newStatus = Status.OFF;
                 break;
             default:
+                System.out.println("Incorrect status value.");
                 return;
         }
 

@@ -7,13 +7,18 @@ import javax.servlet.http.Cookie;
 
 public class SecurityService {
 
-    private static UserList userList = UserList.getInstance();
+    private UserList userList = UserList.getInstance();
 
-    public static String check(String login, String password) {
+    public String check(String login, String password) {
         return userList.check(login, password);
     }
 
-    public static boolean validate(Cookie[] cookies) {
+    public boolean validate(Cookie[] cookies) {
+
+        return !validateAndGet(cookies).isEmpty();
+    }
+
+    public String validateAndGet(Cookie[] cookies) {
 
         String sessionId = "";
 
@@ -26,6 +31,6 @@ public class SecurityService {
             }
         }
 
-        return userList.isValid(sessionId);
+        return userList.isValid(sessionId) ? sessionId : "";
     }
 }
