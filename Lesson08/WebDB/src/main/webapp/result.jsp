@@ -11,7 +11,9 @@
                 $(':checkbox:checked').parent().siblings("#id").each(function(){
                     val.push($(this).text());
                 });
-                $.post("/delete", { ids: val }, null);
+                $.post("/delete", { ids: val.toString() }, function(data, status){
+                    alert("Data: " + data + "\nStatus: " + status);
+                });
             });
         });
     </script>

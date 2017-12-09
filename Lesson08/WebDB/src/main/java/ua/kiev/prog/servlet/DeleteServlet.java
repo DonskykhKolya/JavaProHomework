@@ -2,7 +2,6 @@ package ua.kiev.prog.servlet;
 
 import ua.kiev.prog.dao.PersonDAO;
 import ua.kiev.prog.dao.PersonDAOImpl;
-import ua.kiev.prog.entity.Person;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -11,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class DeleteServlet extends HttpServlet{
@@ -18,16 +19,40 @@ public class DeleteServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String ids = req.getParameter("ids");
+        List<Integer> idList = getIdList(req.getParameter("ids"));
+        if(idList == null) {
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            return;
+        }
 
-        /*EntityManagerFactory emf = (EntityManagerFactory)getServletContext().getAttribute("emf");
+        EntityManagerFactory emf = (EntityManagerFactory)getServletContext().getAttribute("emf");
         EntityManager em = emf.createEntityManager();
-
         PersonDAO dao = new PersonDAOImpl(em);
         try {
-            dao.delete(id);
+            for(Integer id : idList) {
+                dao.delete(id);
+            }
         } finally {
             em.close();
-        }*/
+        }
+
+        resp.getWriter().print(idList.toString());
+    }
+
+    private List<Integer> getIdList(String idStr) {
+
+        List<Integer> ids = new ArrayList<Integer>();
+        try {
+            String[] idArr = idStr.split(",");
+            for (String s : idArr) {
+                int id = Integer.parseInt(s);
+                ids.add(id);
+            }
+        }
+        catch(Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return ids;
     }
 }
