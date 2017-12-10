@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class DeleteServlet extends HttpServlet{
+public class DeleteServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,19 +29,17 @@ public class DeleteServlet extends HttpServlet{
         EntityManager em = emf.createEntityManager();
         PersonDAO dao = new PersonDAOImpl(em);
         try {
-            for(Integer id : idList) {
-                dao.delete(id);
-            }
+            idList.forEach(dao::delete);
         } finally {
             em.close();
         }
 
-        resp.getWriter().print(idList.toString());
+        resp.sendRedirect("list");
     }
 
     private List<Integer> getIdList(String idStr) {
 
-        List<Integer> ids = new ArrayList<Integer>();
+        List<Integer> ids = new ArrayList<>();
         try {
             String[] idArr = idStr.split(",");
             for (String s : idArr) {

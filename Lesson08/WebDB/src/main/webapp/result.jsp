@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Result List</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
@@ -11,9 +11,7 @@
                 $(':checkbox:checked').parent().siblings("#id").each(function(){
                     val.push($(this).text());
                 });
-                $.post("/delete", { ids: val.toString() }, function(data, status){
-                    alert("Data: " + data + "\nStatus: " + status);
-                });
+                $.post("/delete", { ids: val.toString() }, null);
             });
         });
     </script>
