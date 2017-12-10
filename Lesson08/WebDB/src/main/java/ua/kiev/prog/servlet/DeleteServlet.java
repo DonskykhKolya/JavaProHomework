@@ -34,7 +34,7 @@ public class DeleteServlet extends HttpServlet {
             em.close();
         }
 
-        resp.sendRedirect("list");
+        resp.getWriter().print(idList.toString());
     }
 
     private List<Integer> getIdList(String idStr) {
