@@ -1,8 +1,8 @@
 package ua.kiev.prog.servlet;
 
-import ua.kiev.prog.dao.PersonDAO;
-import ua.kiev.prog.dao.PersonDAOImpl;
-import ua.kiev.prog.entity.Person;
+import ua.kiev.prog.dao.UserDAO;
+import ua.kiev.prog.dao.UserDAOImpl;
+import ua.kiev.prog.entity.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -23,10 +23,10 @@ public class ListServlet extends HttpServlet {
         EntityManagerFactory emf = (EntityManagerFactory)getServletContext().getAttribute("emf");
         EntityManager em = emf.createEntityManager();
 
-        PersonDAO dao = new PersonDAOImpl(em);
+        UserDAO dao = new UserDAOImpl(em);
         try {
-            List<Person> personList = dao.getAll();
-            req.setAttribute("personList", personList);
+            List<User> userList = dao.getAll();
+            req.setAttribute("userList", userList);
         } finally {
             em.close();
         }

@@ -1,7 +1,7 @@
 package ua.kiev.prog.servlet;
 
-import ua.kiev.prog.dao.PersonDAO;
-import ua.kiev.prog.dao.PersonDAOImpl;
+import ua.kiev.prog.dao.UserDAO;
+import ua.kiev.prog.dao.UserDAOImpl;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -27,7 +27,7 @@ public class DeleteServlet extends HttpServlet {
 
         EntityManagerFactory emf = (EntityManagerFactory)getServletContext().getAttribute("emf");
         EntityManager em = emf.createEntityManager();
-        PersonDAO dao = new PersonDAOImpl(em);
+        UserDAO dao = new UserDAOImpl(em);
         try {
             idList.forEach(dao::delete);
         } finally {

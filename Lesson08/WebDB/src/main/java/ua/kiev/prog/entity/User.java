@@ -1,14 +1,11 @@
 package ua.kiev.prog.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @Entity
-@Table(name="person")
-public class Person {
+@Table(name="user")
+public class User {
 
     @Id
     @GeneratedValue
@@ -16,9 +13,12 @@ public class Person {
     private String name;
     private Integer age;
 
-    public Person() {}
+    @OneToOne(mappedBy = "user")
+    private Address address;
 
-    public Person(String name, int age) {
+    public User() {}
+
+    public User(String name, int age) {
         this.name = name;
         this.age = age;
     }

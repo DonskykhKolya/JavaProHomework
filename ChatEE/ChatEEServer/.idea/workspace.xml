@@ -7,21 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f8a013bc-20e0-4470-b6e6-8ba8303bad61" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatEEClient/out/production/ChatEEClient/ua/kiev/prog/http/HttpClient.class" afterPath="$PROJECT_DIR$/../ChatEEClient/out/production/ChatEEClient/ua/kiev/prog/http/HttpClient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/ChatEEServer_war_exploded/WEB-INF/classes/ua/kiev/prog/servlet/LoginServlet.class" afterPath="$PROJECT_DIR$/out/artifacts/ChatEEServer_war_exploded/WEB-INF/classes/ua/kiev/prog/servlet/LoginServlet.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/ChatEEServer/ua/kiev/prog/servlet/LoginServlet.class" afterPath="$PROJECT_DIR$/out/production/ChatEEServer/ua/kiev/prog/servlet/LoginServlet.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatEEClient/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../ChatEEClient/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatEEClient/src/ua/kiev/prog/Chat.java" afterPath="$PROJECT_DIR$/../ChatEEClient/src/ua/kiev/prog/Chat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatEEClient/src/ua/kiev/prog/http/HttpClient.java" afterPath="$PROJECT_DIR$/../ChatEEClient/src/ua/kiev/prog/http/HttpClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../ChatEEClient/src/ua/kiev/prog/model/User.java" afterPath="$PROJECT_DIR$/../ChatEEClient/src/ua/kiev/prog/model/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/kiev/prog/model/User.java" afterPath="$PROJECT_DIR$/src/ua/kiev/prog/model/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/kiev/prog/service/SecurityService.java" afterPath="$PROJECT_DIR$/src/ua/kiev/prog/service/SecurityService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/kiev/prog/service/UserService.java" afterPath="$PROJECT_DIR$/src/ua/kiev/prog/service/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/kiev/prog/servlet/LoginServlet.java" afterPath="$PROJECT_DIR$/src/ua/kiev/prog/servlet/LoginServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/kiev/prog/servlet/MessageServlet.java" afterPath="$PROJECT_DIR$/src/ua/kiev/prog/servlet/MessageServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/kiev/prog/servlet/UserServlet.java" afterPath="$PROJECT_DIR$/src/ua/kiev/prog/servlet/UserServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ua/kiev/prog/storage/UserList.java" afterPath="$PROJECT_DIR$/src/ua/kiev/prog/storage/UserList.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -48,7 +34,7 @@
       <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ua/kiev/prog/model/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="597">
+            <state relative-caret-position="663">
               <caret line="51" column="5" lean-forward="false" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
               <folding>
                 <element signature="e#334#335#0" expanded="true" />
@@ -71,8 +57,8 @@
       <file leaf-file-name="MessageServlet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ua/kiev/prog/servlet/MessageServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="48" selection-end-column="9" />
+            <state relative-caret-position="119">
+              <caret line="31" column="6" lean-forward="false" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -176,6 +162,8 @@
     <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-13" />
+    <option name="y" value="-13" />
     <option name="width" value="1612" />
     <option name="height" value="912" />
   </component>
@@ -195,8 +183,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -254,12 +244,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ChatEEClient" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="project.structure.last.edited" value="Artifacts" />
@@ -456,6 +444,7 @@
       <workItem from="1512567085612" duration="2728000" />
       <workItem from="1512579573772" duration="160000" />
       <workItem from="1512581597194" duration="429000" />
+      <workItem from="1513183736745" duration="249000" />
     </task>
     <task id="LOCAL-00001" summary="chatServer init">
       <created>1511894179959</created>
@@ -496,7 +485,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28939000" />
+    <option name="totallyTimeSpent" value="29188000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -1043,7 +1032,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ua/kiev/prog/model/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
+        <state relative-caret-position="663">
           <caret line="51" column="5" lean-forward="false" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
           <folding>
             <element signature="e#334#335#0" expanded="true" />
@@ -1064,8 +1053,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ua/kiev/prog/servlet/MessageServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="48" selection-end-column="9" />
+        <state relative-caret-position="119">
+          <caret line="31" column="6" lean-forward="false" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

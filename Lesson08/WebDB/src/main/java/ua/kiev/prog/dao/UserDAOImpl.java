@@ -1,6 +1,6 @@
 package ua.kiev.prog.dao;
 
-import ua.kiev.prog.entity.Person;
+import ua.kiev.prog.entity.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -8,20 +8,20 @@ import javax.persistence.Query;
 import java.util.List;
 
 
-public class PersonDAOImpl implements PersonDAO {
+public class UserDAOImpl implements UserDAO {
 
     private final EntityManager em;
 
-    public PersonDAOImpl(EntityManager em) {
+    public UserDAOImpl(EntityManager em) {
         this.em = em;
     }
 
-    public void add(Person newPerson) {
+    public void add(User newUser) {
 
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
         try {
-            em.persist(newPerson);
+            em.persist(newUser);
             transaction.commit();
         } catch(Exception ex) {
             ex.printStackTrace();
@@ -29,9 +29,9 @@ public class PersonDAOImpl implements PersonDAO {
         }
     }
 
-    public List<Person> getAll() {
+    public List<User> getAll() {
 
-        Query query = em.createQuery("SELECT p FROM Person p", Person.class);
+        Query query = em.createQuery("SELECT p FROM User p", User.class);
         return query.getResultList();
     }
 
@@ -40,8 +40,8 @@ public class PersonDAOImpl implements PersonDAO {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
         try {
-            Person person = em.getReference(Person.class, id);
-            em.remove(person);
+            User user = em.getReference(User.class, id);
+            em.remove(user);
             transaction.commit();
         } catch(Exception ex) {
             ex.printStackTrace();

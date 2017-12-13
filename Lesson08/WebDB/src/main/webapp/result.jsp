@@ -20,11 +20,11 @@
 </head>
 <body>
 <table border="1">
-    <c:forEach items="${personList}" var="person">
+    <c:forEach items="${userList}" var="user">
         <tr>
-            <td id="id"><c:out value="${person.id}"/></td>
-            <td><c:out value="${person.name}"/></td>
-            <td><c:out value="${person.age}"/></td>
+            <td id="id"><c:out value="${user.id}"/></td>
+            <td><c:out value="${user.name}"/></td>
+            <td><c:out value="${user.age}"/></td>
             <td><input type="checkbox" name="checkbox" id="checkbox"></td>
         </tr>
     </c:forEach>
