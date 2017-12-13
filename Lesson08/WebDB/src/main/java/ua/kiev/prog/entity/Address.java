@@ -14,7 +14,7 @@ public class Address {
     private String country;
     private String city;
     private String street;
-    private Integer house;
+    private String house;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
@@ -23,7 +23,7 @@ public class Address {
     public Address() {
     }
 
-    public Address(String country, String city, String street, Integer house) {
+    public Address(String country, String city, String street, String house) {
 
         this.country = country;
         this.city = city;
@@ -63,21 +63,24 @@ public class Address {
         this.street = street;
     }
 
-    public Integer getHouse() {
+    public String getHouse() {
         return house;
     }
 
-    public void setHouse(Integer house) {
+    public void setHouse(String house) {
         this.house = house;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
     public String toString() {
-        return "Address{" +
-                "country='" + country + '\'' +
-                ", city='" + city + '\'' +
-                ", street='" + street + '\'' +
-                ", house=" + house +
-                '}';
+        return "Address: " + country + ", " + city + ", " + street + ", " + house;
     }
 }

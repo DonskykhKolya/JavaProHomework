@@ -3,6 +3,7 @@ package ua.kiev.prog.servlet;
 
 import ua.kiev.prog.dao.UserDAO;
 import ua.kiev.prog.dao.UserDAOImpl;
+import ua.kiev.prog.entity.Address;
 import ua.kiev.prog.entity.User;
 
 import javax.persistence.EntityManager;
@@ -30,12 +31,21 @@ public class AddServlet extends HttpServlet {
             return;
         }
 
+        String country = req.getParameter("country");
+        String city = req.getParameter("city");
+        String street = req.getParameter("street");
+        String house = req.getParameter("house");
+
         EntityManagerFactory emf = (EntityManagerFactory)getServletContext().getAttribute("emf");
         EntityManager em = emf.createEntityManager();
 
         UserDAO dao = new UserDAOImpl(em);
         try {
-            dao.add(new User(name, iAge));
+            User user = new User(name, iAge);
+            Address address = new Address(country, city, street, house);
+            user.setAddress(address);
+            address.setUser(user);
+            dao.add(user);
         } finally {
             em.close();
         }

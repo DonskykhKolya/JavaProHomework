@@ -25,6 +25,7 @@
             <td id="id"><c:out value="${user.id}"/></td>
             <td><c:out value="${user.name}"/></td>
             <td><c:out value="${user.age}"/></td>
+            <td><c:out value="${user.address}"/></td>
             <td><input type="checkbox" name="checkbox" id="checkbox"></td>
         </tr>
     </c:forEach>
