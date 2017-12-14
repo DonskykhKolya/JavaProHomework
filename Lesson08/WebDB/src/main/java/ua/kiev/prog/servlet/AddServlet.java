@@ -1,10 +1,9 @@
 package ua.kiev.prog.servlet;
 
-
-import ua.kiev.prog.dao.UserDAO;
-import ua.kiev.prog.dao.UserDAOImpl;
 import ua.kiev.prog.entity.Address;
 import ua.kiev.prog.entity.User;
+import ua.kiev.prog.service.DataService;
+import ua.kiev.prog.service.DataServiceImpl;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -36,16 +35,16 @@ public class AddServlet extends HttpServlet {
         String street = req.getParameter("street");
         String house = req.getParameter("house");
 
+        User user = new User(name, iAge);
+        Address address = new Address(country, city, street, house);
+        user.setAddress(address);
+        address.setUser(user);
+
         EntityManagerFactory emf = (EntityManagerFactory)getServletContext().getAttribute("emf");
         EntityManager em = emf.createEntityManager();
-
-        UserDAO dao = new UserDAOImpl(em);
+        DataService service = new DataServiceImpl(em);
         try {
-            User user = new User(name, iAge);
-            Address address = new Address(country, city, street, house);
-            user.setAddress(address);
-            address.setUser(user);
-            dao.add(user);
+            service.addUser(user);
         } finally {
             em.close();
         }

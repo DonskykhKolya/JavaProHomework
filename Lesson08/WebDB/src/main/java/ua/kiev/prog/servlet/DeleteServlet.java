@@ -1,7 +1,7 @@
 package ua.kiev.prog.servlet;
 
-import ua.kiev.prog.dao.UserDAO;
-import ua.kiev.prog.dao.UserDAOImpl;
+import ua.kiev.prog.service.DataService;
+import ua.kiev.prog.service.DataServiceImpl;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -20,16 +20,16 @@ public class DeleteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         List<Integer> idList = getIdList(req.getParameter("ids"));
-        if(idList == null) {
+        if (idList == null) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;
         }
 
-        EntityManagerFactory emf = (EntityManagerFactory)getServletContext().getAttribute("emf");
+        EntityManagerFactory emf = (EntityManagerFactory) getServletContext().getAttribute("emf");
         EntityManager em = emf.createEntityManager();
-        UserDAO dao = new UserDAOImpl(em);
+        DataService service = new DataServiceImpl(em);
         try {
-            idList.forEach(dao::delete);
+            idList.forEach(service::deleteUser);
         } finally {
             em.close();
         }
@@ -46,8 +46,7 @@ public class DeleteServlet extends HttpServlet {
                 int id = Integer.parseInt(s);
                 ids.add(id);
             }
-        }
-        catch(Exception ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
             return null;
         }
