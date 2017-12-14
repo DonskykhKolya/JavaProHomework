@@ -1,10 +1,12 @@
 package ua.kiev.prog.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 public class User {
 
     @Id
@@ -13,10 +15,11 @@ public class User {
     private String name;
     private Integer age;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
-    private Address address;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Address> addressList = new ArrayList<>();
 
-    public User() {}
+    public User() {
+    }
 
     public User(String name, int age) {
         this.name = name;
@@ -27,7 +30,9 @@ public class User {
         return id;
     }
 
-    public void setId(Integer id) { this.id = id; }
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -45,11 +50,22 @@ public class User {
         this.age = age;
     }
 
-    public Address getAddress() {
-        return address;
+    public List<Address> getAddressList() {
+        return addressList;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setAddressList(List<Address> addressList) {
+        this.addressList = addressList;
+    }
+
+    public void addAddress(Address address) {
+        if (!addressList.contains(address)) {
+            addressList.add(address);
+            address.setUser(this);
+        }
+    }
+
+    public void clearAddressList() {
+        addressList.clear();
     }
 }

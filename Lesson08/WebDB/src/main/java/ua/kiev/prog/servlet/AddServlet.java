@@ -37,8 +37,7 @@ public class AddServlet extends HttpServlet {
 
         User user = new User(name, iAge);
         Address address = new Address(country, city, street, house);
-        user.setAddress(address);
-        address.setUser(user);
+        user.addAddress(address);
 
         EntityManagerFactory emf = (EntityManagerFactory)getServletContext().getAttribute("emf");
         EntityManager em = emf.createEntityManager();

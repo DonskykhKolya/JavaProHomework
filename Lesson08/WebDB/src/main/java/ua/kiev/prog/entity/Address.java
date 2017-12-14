@@ -16,7 +16,7 @@ public class Address {
     private String street;
     private String house;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
