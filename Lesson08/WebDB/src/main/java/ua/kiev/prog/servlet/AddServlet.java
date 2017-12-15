@@ -19,27 +19,18 @@ public class AddServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String name = req.getParameter("name");
-        String age = req.getParameter("age");
-        int iAge = 0;
-
-        try {
-            iAge = Integer.parseInt(age);
-        } catch (Exception ex) {
+        User user = getUser(req);
+        if (user == null) {
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;
         }
 
-        String country = req.getParameter("country");
-        String city = req.getParameter("city");
-        String street = req.getParameter("street");
-        String house = req.getParameter("house");
+        Address mainAddress = getAddress(req, 1);
+        Address secondAddress = getAddress(req, 2);
+        user.addAddress(mainAddress);
+        user.addAddress(secondAddress);
 
-        User user = new User(name, iAge);
-        Address address = new Address(country, city, street, house);
-        user.addAddress(address);
-
-        EntityManagerFactory emf = (EntityManagerFactory)getServletContext().getAttribute("emf");
+        EntityManagerFactory emf = (EntityManagerFactory) getServletContext().getAttribute("emf");
         EntityManager em = emf.createEntityManager();
         DataService service = new DataServiceImpl(em);
         try {
@@ -49,5 +40,30 @@ public class AddServlet extends HttpServlet {
         }
 
         resp.sendRedirect("list");
+    }
+
+    private User getUser(HttpServletRequest req) {
+
+        String name = req.getParameter("name");
+        String age = req.getParameter("age");
+        int iAge;
+
+        try {
+            iAge = Integer.parseInt(age);
+        } catch (Exception ex) {
+            return null;
+        }
+
+        return new User(name, iAge);
+    }
+
+    private Address getAddress(HttpServletRequest req, int index) {
+
+        String country = req.getParameter("country" + index);
+        String city = req.getParameter("city" + index);
+        String street = req.getParameter("street" + index);
+        String house = req.getParameter("house" + index);
+
+        return new Address(country, city, street, house);
     }
 }
