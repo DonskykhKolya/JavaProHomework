@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class MyController {
+public class PhotoController {
 
     private Map<Long, Photo> photos = new HashMap<>();
 
