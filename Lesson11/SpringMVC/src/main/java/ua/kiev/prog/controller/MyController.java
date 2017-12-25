@@ -29,7 +29,7 @@ public class MyController {
     }
 
     @RequestMapping(value = "/add_photo", method = RequestMethod.POST)
-    public String onAddPhoto(Model model, @RequestParam MultipartFile photo) {
+    public String onAddPhoto(@RequestParam MultipartFile photo) {
         if (photo.isEmpty())
             throw new PhotoErrorException();
 
