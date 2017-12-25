@@ -25,7 +25,8 @@
 </form>
 
 <input type="button" id="delete" value="Delete">
-
+<br>
+<br>
 <table border="1">
     <c:forEach items="${photos}" var="photo">
         <tr>
