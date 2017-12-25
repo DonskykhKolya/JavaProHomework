@@ -19,9 +19,22 @@
     </script>
 </head>
 <body>
+
 <form action="/add_photo" enctype="multipart/form-data" method="POST">
-    Photo: <input type="file" name="photo">
-    <input type="submit"/>
+    <h3>Upload single photo.</h3>
+    Choose photo: <input type="file" name="photo">
+    <input type="submit" value="Upload"/>
+</form>
+
+<form action="/add_multi_photos" enctype="multipart/form-data" method="POST">
+    <h3>Upload multi photo.</h3>
+    Photo 1: <input type="file" name="photo"><br>
+    Photo 2: <input type="file" name="photo"><br>
+    Photo 3: <input type="file" name="photo"><br>
+    Photo 4: <input type="file" name="photo"><br>
+    Photo 5: <input type="file" name="photo"><br>
+    <br>
+    <input type="submit" value="Upload"/>
 </form>
 
 <input type="button" id="delete" value="Delete">

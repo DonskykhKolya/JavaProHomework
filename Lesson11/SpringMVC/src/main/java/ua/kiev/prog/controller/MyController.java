@@ -5,7 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,16 +29,16 @@ public class MyController {
 
     @RequestMapping(value = "/add_photo", method = RequestMethod.POST)
     public String onAddPhoto(@RequestParam MultipartFile photo) {
-        if (photo.isEmpty())
-            throw new PhotoErrorException();
+        addPhoto(photo);
+        return "redirect:/";
+    }
 
-        try {
-            long id = System.currentTimeMillis();
-            photos.put(id, new Photo(id, photo.getOriginalFilename(), photo.getBytes()));
-            return "redirect:/";
-        } catch (IOException e) {
-            throw new PhotoErrorException();
+    @RequestMapping(value = "/add_multi_photos", method = RequestMethod.POST)
+    public String onAddMultiPhotos(@RequestParam("photo") MultipartFile[] files) {
+        for (MultipartFile file : files) {
+            addPhoto(file);
         }
+        return "redirect:/";
     }
 
     @RequestMapping("/photo/{photo_id}")
@@ -49,11 +48,23 @@ public class MyController {
 
     @RequestMapping("/delete")
     public String onDelete(@RequestParam List<Long> ids) {
-        for(Long id : ids) {
+        for (Long id : ids) {
             if (photos.remove(id) == null)
                 throw new PhotoNotFoundException();
         }
         return "redirect:/";
+    }
+
+    private void addPhoto(MultipartFile photo) {
+        if (photo.isEmpty())
+            throw new PhotoErrorException();
+
+        try {
+            long id = System.currentTimeMillis();
+            photos.put(id, new Photo(id, photo.getOriginalFilename(), photo.getBytes()));
+        } catch (IOException e) {
+            throw new PhotoErrorException();
+        }
     }
 
     private ResponseEntity<byte[]> photoById(long id) {
