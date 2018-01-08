@@ -1,7 +1,15 @@
-package ua.kiev.prog;
+package ua.kiev.prog.notifier;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+import ua.kiev.prog.logger.LoggerAPI;
+
+@Component
+@Scope("prototype")
 public class Notifier {
     private LoggerAPI loggerAPI;
+
+    public Notifier(){}
 
     public Notifier(LoggerAPI loggerAPI) {
         this.loggerAPI = loggerAPI;

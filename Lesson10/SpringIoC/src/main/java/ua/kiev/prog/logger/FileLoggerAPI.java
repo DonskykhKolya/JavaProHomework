@@ -1,4 +1,4 @@
-package ua.kiev.prog;
+package ua.kiev.prog.logger;
 
 import java.io.FileWriter;
 import java.io.IOException;
