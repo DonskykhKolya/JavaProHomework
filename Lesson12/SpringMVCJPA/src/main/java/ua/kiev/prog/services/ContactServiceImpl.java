@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 import ua.kiev.prog.model.Contact;
 import ua.kiev.prog.model.Group;
 import ua.kiev.prog.dao.ContactDAO;
-import ua.kiev.prog.dao.GroupDAO;
 
 import java.util.List;
 
@@ -14,27 +13,15 @@ import java.util.List;
 public class ContactServiceImpl implements ContactService {
     @Autowired
     private ContactDAO contactDAO;
-    @Autowired
-    private GroupDAO groupDAO;
 
     @Transactional
-    public void addContact(Contact contact) {
+    public void add(Contact contact) {
         contactDAO.add(contact);
     }
 
     @Transactional
-    public void addGroup(Group group) {
-        groupDAO.add(group);
-    }
-
-    @Transactional
-    public void deleteContact(long[] ids) {
+    public void delete(long[] ids) {
         contactDAO.delete(ids);
-    }
-
-    @Transactional(readOnly=true)
-    public List<Group> listGroups() {
-        return groupDAO.list();
     }
 
     @Transactional(readOnly=true)
@@ -50,11 +37,6 @@ public class ContactServiceImpl implements ContactService {
     @Transactional(readOnly = true)
     public long count() {
         return contactDAO.count();
-    }
-
-    @Transactional(readOnly=true)
-    public Group findGroup(long id) {
-        return groupDAO.findOne(id);
     }
 
     @Transactional(readOnly=true)

@@ -29,16 +29,16 @@ public class GroupController {
 
     @RequestMapping(value = "/group/add", method = RequestMethod.POST)
     public String groupAdd(@RequestParam String name) {
-        contactService.addGroup(new Group(name));
+        groupService.add(new Group(name));
         return "redirect:/";
     }
 
     @RequestMapping(value = "/group/{id}", method = RequestMethod.GET)
     public String listGroup(@PathVariable(value = "id") long groupId, Model model) {
-        Group group = (groupId != DEFAULT_GROUP_ID) ? contactService.findGroup(groupId) : null;
+        Group group = (groupId != DEFAULT_GROUP_ID) ? groupService.findGroup(groupId) : null;
 
         model.addAttribute("group_id", groupId);
-        model.addAttribute("groups", contactService.listGroups());
+        model.addAttribute("groups", groupService.listGroups());
         model.addAttribute("contacts", contactService.listContacts(group));
 
         return "index";
@@ -49,11 +49,6 @@ public class GroupController {
         if(groupId != DEFAULT_GROUP_ID) {
             groupService.delete(groupId);
         }
-
-        model.addAttribute("group_id", DEFAULT_GROUP_ID);
-        model.addAttribute("groups", contactService.listGroups());
-        model.addAttribute("contacts", contactService.listContacts(null));
-
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

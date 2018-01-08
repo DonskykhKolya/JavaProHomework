@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ua.kiev.prog.model.Contact;
 import ua.kiev.prog.model.Group;
 import ua.kiev.prog.services.ContactService;
+import ua.kiev.prog.services.GroupService;
 
 import static ua.kiev.prog.controllers.GroupController.DEFAULT_GROUP_ID;
 
@@ -20,6 +21,8 @@ public class ContactController {
 
     @Autowired
     private ContactService contactService;
+    @Autowired
+    private GroupService groupService;
 
     @RequestMapping("/")
     public String index(Model model, @RequestParam(required = false, defaultValue = "0") Integer page) {
@@ -30,7 +33,7 @@ public class ContactController {
         long pageCount = (totalCount / ITEMS_PER_PAGE) +
                 ((totalCount % ITEMS_PER_PAGE > 0) ? 1 : 0);
 
-        model.addAttribute("groups", contactService.listGroups());
+        model.addAttribute("groups", groupService.listGroups());
         model.addAttribute("contacts", contactService.listContacts(null, start, ITEMS_PER_PAGE));
         model.addAttribute("pages", pageCount);
 
@@ -39,13 +42,13 @@ public class ContactController {
 
     @RequestMapping("/contact_add_page")
     public String contactAddPage(Model model) {
-        model.addAttribute("groups", contactService.listGroups());
+        model.addAttribute("groups", groupService.listGroups());
         return "contact_add_page";
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.POST)
     public String search(@RequestParam String pattern, Model model) {
-        model.addAttribute("groups", contactService.listGroups());
+        model.addAttribute("groups", groupService.listGroups());
         model.addAttribute("contacts", contactService.searchContacts(pattern));
         return "index";
     }
@@ -53,21 +56,21 @@ public class ContactController {
     @RequestMapping(value = "/contact/delete", method = RequestMethod.POST)
     public ResponseEntity<Void> delete(@RequestParam(value = "toDelete[]", required = false) long[] toDelete) {
         if (toDelete != null && toDelete.length > 0)
-            contactService.deleteContact(toDelete);
+            contactService.delete(toDelete);
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @RequestMapping(value="/contact/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/contact/add", method = RequestMethod.POST)
     public String contactAdd(@RequestParam(value = "group") long groupId,
                              @RequestParam String name,
                              @RequestParam String surname,
                              @RequestParam String phone,
                              @RequestParam String email) {
-        Group group = (groupId != DEFAULT_GROUP_ID) ? contactService.findGroup(groupId) : null;
+        Group group = (groupId != DEFAULT_GROUP_ID) ? groupService.findGroup(groupId) : null;
 
         Contact contact = new Contact(group, name, surname, phone, email);
-        contactService.addContact(contact);
+        contactService.add(contact);
 
         return "redirect:/";
     }
