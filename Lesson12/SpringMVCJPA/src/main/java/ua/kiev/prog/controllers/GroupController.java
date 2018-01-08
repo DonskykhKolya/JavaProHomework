@@ -5,10 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import ua.kiev.prog.model.Contact;
 import ua.kiev.prog.model.Group;
 import ua.kiev.prog.services.ContactService;
 import ua.kiev.prog.services.GroupService;
@@ -28,8 +26,17 @@ public class GroupController {
     }
 
     @RequestMapping(value = "/group/add", method = RequestMethod.POST)
-    public String groupAdd(@RequestParam String name) {
-        groupService.add(new Group(name));
+    public String groupAdd(@RequestParam String group_name,
+                           @RequestParam String name,
+                           @RequestParam String surname,
+                           @RequestParam String phone,
+                           @RequestParam String email) {
+        Group group = new Group(group_name);
+        groupService.add(group);
+
+        Contact contact = new Contact(group, name, surname, phone, email);
+        contactService.add(contact);
+
         return "redirect:/";
     }
 

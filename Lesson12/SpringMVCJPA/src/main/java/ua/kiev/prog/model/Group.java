@@ -5,16 +5,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="Groups")
+@Table(name = "Groups")
 public class Group {
     @Id
     @GeneratedValue
     private long id;
     private String name;
-    @OneToMany(mappedBy="group", cascade=CascadeType.ALL)
+    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL)
     private List<Contact> contacts = new ArrayList<>();
 
-    public Group() {}
+    public Group() {
+    }
 
     public Group(String name) {
         this.name = name;
@@ -42,5 +43,20 @@ public class Group {
 
     public void setContacts(List<Contact> contacts) {
         this.contacts = contacts;
+        contacts.forEach(c -> c.setGroup(this));
+    }
+
+    public void addContact(Contact contact) {
+        if (!contacts.contains(contact)) {
+            contacts.add(contact);
+            contact.setGroup(this);
+        }
+    }
+
+    public void deleteContact(Contact contact) {
+        if (contacts.contains(contact)) {
+            contacts.remove(contact);
+            contact.setGroup(null);
+        }
     }
 }

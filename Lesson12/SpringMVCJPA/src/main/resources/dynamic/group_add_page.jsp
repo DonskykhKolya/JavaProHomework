@@ -10,7 +10,11 @@
         <div class="container">
             <form role="form" class="form-horizontal" action="/group/add" method="post">
                 <div class="form-group"><h3>New Group</h3></div>
-                <div class="form-group"><input type="text" class="form-control" name="name" placeholder="Name"></div>
+                <div class="form-group"><input type="text" class="form-control" name="group_name" placeholder="Group name"></div>
+                <input class="form-control form-group" type="text" name="name" placeholder="User name">
+                <input class="form-control form-group" type="text" name="surname" placeholder="Surname">
+                <input class="form-control form-group" type="text" name="phone" placeholder="Phone">
+                <input class="form-control form-group" type="text" name="email" placeholder="Email">
                 <div class="form-group"><input type="submit" class="btn btn-primary" value="Add"></div>
             </form>
         </div>
