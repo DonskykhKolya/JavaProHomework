@@ -1,6 +1,7 @@
 package ua.kiev.prog.dao;
 
 import org.springframework.stereotype.Repository;
+import ua.kiev.prog.model.Contact;
 import ua.kiev.prog.model.Group;
 
 import javax.persistence.EntityManager;
@@ -19,7 +20,8 @@ public class GroupDAOImpl implements GroupDAO {
     }
 
     @Override
-    public void delete(Group group) {
+    public void delete(long id) {
+        Group group = entityManager.getReference(Group.class, id);
         entityManager.remove(group);
     }
 

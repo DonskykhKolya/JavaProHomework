@@ -20,6 +20,7 @@
                             <li><button type="button" id="add_contact" class="btn btn-default navbar-btn">Add Contact</button></li>
                             <li><button type="button" id="add_group" class="btn btn-default navbar-btn">Add Group</button></li>
                             <li><button type="button" id="delete_contact" class="btn btn-default navbar-btn">Delete Contact</button></li>
+                            <li><button type="button" id="delete_group" class="btn btn-default navbar-btn">Delete Group</button></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Groups <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
@@ -97,6 +98,16 @@
                 });
                 $.post("/contact/delete", data, function(data, status) {
                     window.location.reload();
+                });
+            });
+
+            $('#delete_group').click(function(){
+                $.ajax({
+                    url: "/group/<c:out value="${group_id}"/>",
+                    type: 'DELETE',
+                    success: function(result) {
+                        window.location.reload();
+                    }
                 });
             });
         </script>
