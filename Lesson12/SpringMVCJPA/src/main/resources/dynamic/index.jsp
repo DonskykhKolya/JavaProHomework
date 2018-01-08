@@ -21,6 +21,7 @@
                             <li><button type="button" id="add_group" class="btn btn-default navbar-btn">Add Group</button></li>
                             <li><button type="button" id="delete_contact" class="btn btn-default navbar-btn">Delete Contact</button></li>
                             <li><button type="button" id="delete_group" class="btn btn-default navbar-btn">Delete Group</button></li>
+                            <li><button type="button" id="export" class="btn btn-default navbar-btn">Exprot to CSV</button></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Groups <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
@@ -109,6 +110,10 @@
                         window.location.reload();
                     }
                 });
+            });
+
+            $('#export').click(function(){
+                window.location.href="/export/<c:out value="${group_id}"/>";
             });
         </script>
     </body>

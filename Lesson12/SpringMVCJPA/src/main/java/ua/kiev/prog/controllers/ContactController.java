@@ -5,13 +5,22 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.supercsv.io.CsvBeanWriter;
+import org.supercsv.io.ICsvBeanWriter;
+import org.supercsv.prefs.CsvPreference;
 import ua.kiev.prog.model.Contact;
 import ua.kiev.prog.model.Group;
 import ua.kiev.prog.services.ContactService;
 import ua.kiev.prog.services.GroupService;
+
+import javax.servlet.http.HttpServletResponse;
+
+import java.io.IOException;
+import java.util.List;
 
 import static ua.kiev.prog.controllers.GroupController.DEFAULT_GROUP_ID;
 
@@ -73,5 +82,34 @@ public class ContactController {
         contactService.add(contact);
 
         return "redirect:/";
+    }
+
+    @RequestMapping("/export/{id}")
+    public void exportToCsv(@PathVariable(value = "id") long groupId, HttpServletResponse response) throws IOException {
+
+        Group group = (groupId != DEFAULT_GROUP_ID) ? groupService.findGroup(groupId) : null;
+        List<Contact> contacts = contactService.listContacts(group);
+
+        String csvFileName = "contacts.csv";
+        response.setContentType("text/csv");
+
+        String headerKey = "Content-Disposition";
+        String headerValue = String.format("attachment; filename=\"%s\"", csvFileName);
+        response.setHeader(headerKey, headerValue);
+
+        // uses the Super CSV API to generate CSV data from the model data
+        ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(), CsvPreference.STANDARD_PREFERENCE);
+
+        String[] header = {"Group", "Name", "Surname", "Phone", "Email"};
+        csvWriter.writeHeader(header);
+        contacts.forEach(c -> {
+            try {
+                csvWriter.write(c, header);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        csvWriter.close();
     }
 }
