@@ -18,7 +18,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul id="groupList" class="nav navbar-nav">
                     <li><button type="button" id="delete1" class="btn btn-default navbar-btn">Delete with contacts</button></li>
-                    <li><button type="button" id="delete2" class="btn btn-default navbar-btn">Delete</button></li>
+                    <li><button type="button" id="delete2" class="btn btn-default navbar-btn">Delete without contacts</button></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
