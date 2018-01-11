@@ -26,27 +26,17 @@ public class ContactService {
     }
 
     @Transactional
-    public void addGroup(Group group) {
-        groupRepository.save(group);
-    }
-
-    @Transactional
     public void deleteContacts(long[] idList) {
         for (long id : idList)
             contactRepository.delete(id);
     }
 
-    @Transactional(readOnly=true)
-    public List<Group> findGroups() {
-        return groupRepository.findAll();
-    }
-
-    @Transactional(readOnly=true)
+    @Transactional(readOnly = true)
     public List<Contact> findAll(Pageable pageable) {
         return contactRepository.findAll(pageable).getContent();
     }
 
-    @Transactional(readOnly=true)
+    @Transactional(readOnly = true)
     public List<Contact> findByGroup(Group group, Pageable pageable) {
         return contactRepository.findByGroup(group, pageable);
     }
@@ -56,7 +46,7 @@ public class ContactService {
         return contactRepository.countByGroup(group);
     }
 
-    @Transactional(readOnly=true)
+    @Transactional(readOnly = true)
     public List<Contact> findByPattern(String pattern, Pageable pageable) {
         return contactRepository.findByPattern(pattern, pageable);
     }
@@ -66,19 +56,45 @@ public class ContactService {
         return contactRepository.count();
     }
 
-    @Transactional(readOnly=true)
+    @Transactional
+    public void addGroup(Group group) {
+        groupRepository.save(group);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Group> findGroups() {
+        return groupRepository.findAll();
+    }
+
+    @Transactional(readOnly = true)
     public Group findGroup(long id) {
         return groupRepository.findOne(id);
     }
 
-    @Transactional(readOnly=true)
+    @Transactional(readOnly = true)
     public List<GroupDTO> getGroupsInfo() {
         List<GroupDTO> groupInfo = new ArrayList<>();
         List<Group> groups = groupRepository.findAll();
-        for(Group group : groups) {
+        for (Group group : groups) {
             GroupDTO dto = new GroupDTO(group.getId(), group.getName(), group.getContacts().size());
             groupInfo.add(dto);
         }
         return groupInfo;
+    }
+
+    @Transactional
+    public void deleteWithContacts(long[] idList) {
+        for (long id : idList)
+            groupRepository.delete(id);
+    }
+
+    @Transactional
+    public void deleteWithOutContacts(long[] idList) {
+        for (long id : idList) {
+            Group group = groupRepository.findOne(id);
+            group.getContacts().forEach(c -> c.setGroup(null));
+            group.getContacts().clear();
+            groupRepository.delete(id);
+        }
     }
 }

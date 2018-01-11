@@ -44,24 +44,22 @@
 
 <script>
     $('#delete1').click(function(){
-        var data = { 'toDelete[]' : []};
-        $(":checked").each(function() {
-            data['toDelete[]'].push($(this).val());
-        });
-        $.post("/groups/delete1", data, function(data, status) {
-            window.location.reload();
-        });
+        sendDeleteRequest("/groups/delete1");
     });
 
     $('#delete2').click(function(){
+        sendDeleteRequest("/groups/delete2");
+    });
+
+    function sendDeleteRequest(url) {
         var data = { 'toDelete[]' : []};
         $(":checked").each(function() {
             data['toDelete[]'].push($(this).val());
         });
-        $.post("/groups/delete2", data, function(data, status) {
+        $.post(url, data, function(data, status) {
             window.location.reload();
         });
-    });
+    };
 </script>
 </body>
 </html>

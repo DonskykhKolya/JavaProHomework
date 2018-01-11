@@ -3,6 +3,8 @@ package ua.kiev.prog.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +29,12 @@ public class GroupController {
     @RequestMapping("/group_add_page")
     public String groupAddPage() {
         return "group_add_page";
+    }
+
+    @RequestMapping(value = "/group/add", method = RequestMethod.POST)
+    public String groupAdd(@RequestParam String name) {
+        contactService.addGroup(new Group(name));
+        return "redirect:/";
     }
 
     @RequestMapping("/group/{id}")
@@ -55,10 +63,20 @@ public class GroupController {
         return "groups";
     }
 
-    @RequestMapping(value = "/group/add", method = RequestMethod.POST)
-    public String groupAdd(@RequestParam String name) {
-        contactService.addGroup(new Group(name));
-        return "redirect:/";
+    @RequestMapping(value = "/groups/delete1", method = RequestMethod.POST)
+    public ResponseEntity<Void> deleteWithContacts(@RequestParam(value = "toDelete[]", required = false) long[] toDelete) {
+        if (toDelete != null && toDelete.length > 0)
+            contactService.deleteWithContacts(toDelete);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/groups/delete2", method = RequestMethod.POST)
+    public ResponseEntity<Void> deleteWithOutContacts(@RequestParam(value = "toDelete[]", required = false) long[] toDelete) {
+        if (toDelete != null && toDelete.length > 0)
+            contactService.deleteWithOutContacts(toDelete);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     private long getPageCount(Group group) {
