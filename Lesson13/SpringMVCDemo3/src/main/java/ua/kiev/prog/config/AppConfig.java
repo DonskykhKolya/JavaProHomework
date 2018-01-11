@@ -1,4 +1,4 @@
-package ua.kiev.prog;
+package ua.kiev.prog.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

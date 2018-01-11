@@ -1,10 +1,16 @@
-package ua.kiev.prog;
+package ua.kiev.prog.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ua.kiev.prog.dto.GroupDTO;
+import ua.kiev.prog.model.Contact;
+import ua.kiev.prog.model.Group;
+import ua.kiev.prog.repository.ContactRepository;
+import ua.kiev.prog.repository.GroupRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -63,5 +69,16 @@ public class ContactService {
     @Transactional(readOnly=true)
     public Group findGroup(long id) {
         return groupRepository.findOne(id);
+    }
+
+    @Transactional(readOnly=true)
+    public List<GroupDTO> getGroupsInfo() {
+        List<GroupDTO> groupInfo = new ArrayList<>();
+        List<Group> groups = groupRepository.findAll();
+        for(Group group : groups) {
+            GroupDTO dto = new GroupDTO(group.getId(), group.getName(), group.getContacts().size());
+            groupInfo.add(dto);
+        }
+        return groupInfo;
     }
 }

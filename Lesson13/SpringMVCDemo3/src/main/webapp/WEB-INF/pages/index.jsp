@@ -20,6 +20,7 @@
                             <li><button type="button" id="add_contact" class="btn btn-default navbar-btn">Add Contact</button></li>
                             <li><button type="button" id="add_group" class="btn btn-default navbar-btn">Add Group</button></li>
                             <li><button type="button" id="delete_contact" class="btn btn-default navbar-btn">Delete Contact</button></li>
+                            <li><button type="button" id="groups" class="btn btn-default navbar-btn">Groups List</button></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Groups <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
@@ -95,6 +96,10 @@
 
             $('#add_group').click(function(){
                 window.location.href='/group_add_page';
+            });
+
+            $('#groups').click(function(){
+                window.location.href='/groups';
             });
 
             $('#delete_contact').click(function(){

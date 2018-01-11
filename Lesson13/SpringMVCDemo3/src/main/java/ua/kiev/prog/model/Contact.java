@@ -1,4 +1,4 @@
-package ua.kiev.prog;
+package ua.kiev.prog.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

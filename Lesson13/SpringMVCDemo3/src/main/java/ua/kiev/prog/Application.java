@@ -4,6 +4,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import ua.kiev.prog.model.Contact;
+import ua.kiev.prog.model.Group;
+import ua.kiev.prog.service.ContactService;
 
 @SpringBootApplication
 public class Application {
