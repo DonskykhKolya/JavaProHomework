@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
+import ua.kiev.prog.model.UserRole;
+import ua.kiev.prog.service.UserService;
 
 @SpringBootApplication
 public class Application {

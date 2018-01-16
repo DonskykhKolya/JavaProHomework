@@ -1,8 +1,11 @@
-package ua.kiev.prog;
+package ua.kiev.prog.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ua.kiev.prog.model.CustomUser;
+import ua.kiev.prog.model.UserRole;
+import ua.kiev.prog.repository.UserRepository;
 
 @Service
 public class UserService {

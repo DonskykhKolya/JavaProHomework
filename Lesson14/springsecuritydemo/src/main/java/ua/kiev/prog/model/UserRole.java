@@ -1,4 +1,4 @@
-package ua.kiev.prog;
+package ua.kiev.prog.model;
 
 public enum UserRole {
     ADMIN, USER;

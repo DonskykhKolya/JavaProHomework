@@ -1,4 +1,4 @@
-package ua.kiev.prog;
+package ua.kiev.prog.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
@@ -9,6 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ua.kiev.prog.model.CustomUser;
+import ua.kiev.prog.model.UserRole;
+import ua.kiev.prog.service.UserService;
 
 @Controller
 public class MyController {
