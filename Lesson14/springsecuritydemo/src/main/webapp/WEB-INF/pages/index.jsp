@@ -11,14 +11,17 @@
             <h3><c:out value="${s}" /></h3>
         </c:forEach>
 
+        <c:if test="${isAdmin}">
+            <a href="/admin">Click here to visit ADMIN page.</a><br/>
+        </c:if>
+
         <form action="/update" method="POST">
             E-mail:<br/><input type="text" name="email" value="${email}" /><br/>
             Phone:<br/><input type="text" name="phone" value="${phone}" /><br/>
             <input type="submit" value="Update" />
         </form>
 
-        <c:url value="/logout" var="logoutUrl" />
-        <p>Click to logout: <a href="${logoutUrl}">LOGOUT</a></p>
+        <p>Click to logout: <a href="/logout">LOGOUT</a></p>
     </div>
 </body>
 </html>

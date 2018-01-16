@@ -2,6 +2,7 @@ package ua.kiev.prog.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -13,6 +14,8 @@ import ua.kiev.prog.model.CustomUser;
 import ua.kiev.prog.model.UserRole;
 import ua.kiev.prog.service.UserService;
 
+import java.util.Collection;
+
 @Controller
 public class MyController {
     @Autowired
@@ -22,8 +25,8 @@ public class MyController {
     private ShaPasswordEncoder passwordEncoder;
 
     @RequestMapping("/")
-    public String index(Model model){
-        User user = (User)SecurityContextHolder
+    public String index(Model model) {
+        User user = (User) SecurityContextHolder
                 .getContext()
                 .getAuthentication()
                 .getPrincipal();
@@ -31,12 +34,25 @@ public class MyController {
         String login = user.getUsername();
         CustomUser dbUser = userService.findByLogin(login);
 
+        boolean isAdmin = isAdmin(user);
+
         model.addAttribute("login", login);
         model.addAttribute("roles", user.getAuthorities());
+        model.addAttribute("isAdmin", isAdmin);
         model.addAttribute("email", dbUser.getEmail());
         model.addAttribute("phone", dbUser.getPhone());
 
         return "index";
+    }
+
+    private boolean isAdmin(User user) {
+        Collection<GrantedAuthority> roles = user.getAuthorities();
+        for(GrantedAuthority role : roles) {
+            if(role.getAuthority().equals(UserRole.ADMIN.toString())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
@@ -55,13 +71,13 @@ public class MyController {
 
     @RequestMapping(value = "/newuser", method = RequestMethod.POST)
     public String register(@RequestParam String login,
-                         @RequestParam String password,
-                         @RequestParam(required = false) String email,
-                         @RequestParam(required = false) String phone,
-                         Model model) {
+                           @RequestParam String password,
+                           @RequestParam(required = false) String email,
+                           @RequestParam(required = false) String phone,
+                           Model model) {
         String passHash = passwordEncoder.encodePassword(password, null);
 
-        if ("".equals(login) || ! userService.addUser(login, passHash, UserRole.USER, email, phone)) {
+        if ("".equals(login) || !userService.addUser(login, passHash, UserRole.USER, email, phone)) {
             model.addAttribute("exists", true);
             model.addAttribute("login", login);
             return "register";
@@ -81,13 +97,13 @@ public class MyController {
     }
 
     @RequestMapping("/admin")
-    public String admin(){
+    public String admin() {
         return "admin";
     }
 
     @RequestMapping("/unauthorized")
-    public String unauthorized(Model model){
-        User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public String unauthorized(Model model) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         model.addAttribute("login", user.getUsername());
         return "unauthorized";
     }
