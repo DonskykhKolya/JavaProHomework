@@ -1,6 +1,8 @@
 package ua.kiev.prog.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,9 +17,10 @@ import ua.kiev.prog.model.UserRole;
 import ua.kiev.prog.service.UserService;
 
 import java.util.Collection;
+import java.util.List;
 
 @Controller
-public class MyController {
+public class UserController {
     @Autowired
     private UserService userService;
 
@@ -47,8 +50,8 @@ public class MyController {
 
     private boolean isAdmin(User user) {
         Collection<GrantedAuthority> roles = user.getAuthorities();
-        for(GrantedAuthority role : roles) {
-            if(role.getAuthority().equals(UserRole.ADMIN.toString())) {
+        for (GrantedAuthority role : roles) {
+            if (role.getAuthority().equals(UserRole.ADMIN.toString())) {
                 return true;
             }
         }
@@ -86,6 +89,14 @@ public class MyController {
         return "redirect:/";
     }
 
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public ResponseEntity<Void> delete(@RequestParam(value = "toDelete[]", required = false) long[] toDelete) {
+        if (toDelete != null && toDelete.length > 0) {
+            userService.deleteUsers(toDelete);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     @RequestMapping("/login")
     public String loginPage() {
         return "login";
@@ -97,7 +108,9 @@ public class MyController {
     }
 
     @RequestMapping("/admin")
-    public String admin() {
+    public String admin(Model model) {
+        List<CustomUser> users = userService.findAll();
+        model.addAttribute("users", users);
         return "admin";
     }
 

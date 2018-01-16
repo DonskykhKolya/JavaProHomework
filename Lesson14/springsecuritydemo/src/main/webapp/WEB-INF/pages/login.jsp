@@ -3,13 +3,17 @@
 <html>
 <head>
     <title>Prog.kiev.ua</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div align="center">
-        <form action="/j_spring_security_check" method="POST">
-            Login:<br/><input type="text" name="j_login"><br/>
-            Password:<br/><input type="password" name="j_password"><br/>
-            <input type="submit" />
+    <div class="container" align="center">
+        <h1>Welcome!</h1>
+        <form role="form" class="form-horizontal" action="/j_spring_security_check" method="POST">
+            <input class="form-control form-group" type="text" name="j_login" placeholder="Login">
+            <input class="form-control form-group" type="password" name="j_password" placeholder="Password">
+            <input class="btn btn-primary" type="submit" />
 
             <p><a href="/register">Register new user</a></p>
 

@@ -7,10 +7,17 @@ import ua.kiev.prog.model.CustomUser;
 import ua.kiev.prog.model.UserRole;
 import ua.kiev.prog.repository.UserRepository;
 
+import java.util.List;
+
 @Service
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+
+    @Transactional(readOnly = true)
+    public List<CustomUser> findAll() {
+        return userRepository.findAll();
+    }
 
     @Transactional(readOnly = true)
     public CustomUser findByLogin(String login) {
@@ -37,5 +44,12 @@ public class UserService {
         user.setPhone(phone);
 
         userRepository.save(user);
+    }
+
+    @Transactional
+    public void deleteUsers(long[] ids) {
+        for (long id : ids) {
+            userRepository.delete(id);
+        }
     }
 }
